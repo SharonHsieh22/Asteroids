@@ -2,10 +2,11 @@ abstract class GameObject {
   PVector location;
   PVector velocity;
   int lives;
-  boolean alive;
+  int size;
+
 
   GameObject() {
-    alive = true;
+    
   }
 
   void show() {
@@ -19,7 +20,4 @@ abstract class GameObject {
     if (location.y < -100) location.y = 700;
   }
 
-  boolean alive() {
-    return alive;
-  }
 }
