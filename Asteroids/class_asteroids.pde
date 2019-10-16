@@ -27,10 +27,18 @@ class Asteroid extends GameObject {
         if (dist(myObj.location.x, myObj.location.y, location.x, location.y) < size/2 + myObj.size/2) {
           myObj.lives = 0;
           lives = 0;
+          if(size > 50) {
+           points = points + 10; 
+          } else if(size > 25) {
+           points = points + 100; 
+          } else if(size > 12) {
+           points = points + 1000; 
+          } else if(size > 6) {
+           points = points + 10000; 
+          }
           if(size > 12) {
           myGameObjects.add(new Asteroid(location.x, location.y, size/2));
           myGameObjects.add(new Asteroid(location.x, location.y, size/2));
-          println("lol ur bad times " + size);
           }
         }
       }

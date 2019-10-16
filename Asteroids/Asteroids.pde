@@ -8,6 +8,7 @@ int mode;
 final int intro = 0;
 final int game = 1;
 final int gameover = 2;
+int points;
 
 void setup() {
   size(800, 600);
