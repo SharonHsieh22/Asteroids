@@ -1,7 +1,7 @@
 class Asteroid extends GameObject {
-  Asteroid() {
+  Asteroid(float x, float y) {
     super();
-    location = new PVector(random(0, width), random(0, height));
+    location = new PVector(x, y);
     velocity = new PVector(random(-1, 1), random(-5, 5));
     lives = 1;
     size = 100;

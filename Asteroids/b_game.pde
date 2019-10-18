@@ -11,9 +11,17 @@ void game() {
       i++;
     }
   }
-    
-  myShip.show();
-  myShip.act();
+  if (myShip.lives > 0) {
+    myShip.show();
+    myShip.act();
+  } else {
+    mode = gameover;
+  }
+  ufoTimer++;
+  if (ufoTimer >= 2000) {
+    myGameObjects.add(new Ufo());
+    ufoTimer = 0;
+  }
   fill(255);
   textSize(40);
   text("POINTS:" + points, 50, 80);

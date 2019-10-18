@@ -2,27 +2,31 @@ boolean upkey, downkey, leftkey, rightkey, spacekey;
 PImage shipimg;
 PImage asteroidimg;
 PImage ufoimg;
+PImage particleimg;
 Ship myShip;
+Ufo myUfo;
 ArrayList<GameObject> myGameObjects;
 int mode;
 final int intro = 0;
 final int game = 1;
 final int gameover = 2;
 int points;
+int ufoTimer;
 
 void setup() {
   size(800, 600);
   shipimg = loadImage("ship.png");
   asteroidimg = loadImage("asteroid.png");
   ufoimg = loadImage("ufo.png");
+  particleimg = loadImage("particle.png");
   imageMode(CENTER);
   myShip = new Ship();
   myGameObjects = new ArrayList<GameObject>();
-  myGameObjects.add(new Asteroid());
-  myGameObjects.add(new Asteroid());
-  myGameObjects.add(new Asteroid());
-  myGameObjects.add(new Asteroid());
-  myGameObjects.add(new Asteroid());
+  myGameObjects.add(new Asteroid(width/2, height));
+  myGameObjects.add(new Asteroid(width, height/2));
+  myGameObjects.add(new Asteroid(0, 0));
+  myGameObjects.add(new Asteroid(width, height));
+  
 }
 
 void draw() {  
