@@ -4,7 +4,7 @@ class uBullet extends GameObject {
   uBullet() {
     super();
     location = new PVector(myUfo.location.x, myUfo.location.y);
-    velocity = new PVector(myShip.direction.x*-1, myShip.direction.y*-1);
+    velocity = new PVector(myShip.direction.x, myShip.direction.y);
     velocity.setMag(6);
     lives = 1;
     timer = 80;
@@ -19,10 +19,11 @@ class uBullet extends GameObject {
   
   void act() {
     super.act();
-    timer--;
-    if(timer == 0) {
-     lives = 0; 
-    }
+    //timer--;
+    //if(timer == 0) {
+    // lives = 0; 
+    //}
+   
   }
   
 }

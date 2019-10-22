@@ -2,7 +2,7 @@ class Ufo extends GameObject {
   int timer;
   int threshold;
   Ufo() { 
-    location = new PVector(random(0, width), random(0, height));
+    location = new PVector(width + 50, random(0, height));
     velocity = new PVector(random(-1, 1), random(-5, 5));
     lives = 1;
     size = 80;
@@ -11,13 +11,13 @@ class Ufo extends GameObject {
   }
 
   void show() {
-
     image(ufoimg, location.x, location.y, size, size);
   }
 
   void act() {
     super.act();
-
+    
+    //myGameObjects.add(new uBullet());
 
     for (int i = 0; i < myGameObjects.size(); i++) {
       GameObject myObj = myGameObjects.get(i);

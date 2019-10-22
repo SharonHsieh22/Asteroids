@@ -47,8 +47,8 @@ class Ship extends GameObject {
       if (myObj instanceof Asteroid) {
         if (dist(myObj.location.x, myObj.location.y, location.x, location.y) < size/4 + myObj.size/2) {
           if (timer <= 0) {
-            lives--;
-            timer = 75;
+            //lives--;
+            timer = 70;
           }
           timer--;
           println(lives);

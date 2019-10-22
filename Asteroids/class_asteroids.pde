@@ -24,21 +24,27 @@ class Asteroid extends GameObject {
     for (int i = 0; i < myGameObjects.size(); i++) {
       GameObject myObj = myGameObjects.get(i);
       if (myObj instanceof Bullet) {
+
         if (dist(myObj.location.x, myObj.location.y, location.x, location.y) < size/2 + myObj.size/2) {
           myObj.lives = 0;
           lives = 0;
-          if(size > 50) {
-           points = points + 10; 
-          } else if(size > 25) {
-           points = points + 100; 
-          } else if(size > 12) {
-           points = points + 1000; 
-          } else if(size > 6) {
-           points = points + 10000; 
+          //myGameObjects.add(new Particle(location.x, location.y));
+          for (int j = 0; j < 100; ) {
+            myGameObjects.add(new Particle(location.x, location.y));
+            j++;
           }
-          if(size > 12) {
-          myGameObjects.add(new Asteroid(location.x, location.y, size/2));
-          myGameObjects.add(new Asteroid(location.x, location.y, size/2));
+          if (size > 50) {
+            points = points + 10;
+          } else if (size > 25) {
+            points = points + 100;
+          } else if (size > 12) {
+            points = points + 1000;
+          } else if (size > 6) {
+            points = points + 10000;
+          }
+          if (size > 12) {
+            myGameObjects.add(new Asteroid(location.x, location.y, size/2));
+            myGameObjects.add(new Asteroid(location.x, location.y, size/2));
           }
         }
       }

@@ -18,11 +18,12 @@ void game() {
     mode = gameover;
   }
   ufoTimer++;
-  if (ufoTimer >= 2000) {
+  if (ufoTimer >= 200) {
     myGameObjects.add(new Ufo());
     ufoTimer = 0;
   }
   fill(255);
-  textSize(40);
-  text("POINTS:" + points, 50, 80);
+  textSize(20);
+  text("POINTS> " + points, 50, 80);
+  text("LIVES> " + myShip.lives, width - 200, 80);
 }

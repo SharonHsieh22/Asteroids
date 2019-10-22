@@ -3,6 +3,9 @@ PImage shipimg;
 PImage asteroidimg;
 PImage ufoimg;
 PImage particleimg;
+PImage bgimg;
+PFont font;
+
 Ship myShip;
 Ufo myUfo;
 ArrayList<GameObject> myGameObjects;
@@ -19,14 +22,15 @@ void setup() {
   asteroidimg = loadImage("asteroid.png");
   ufoimg = loadImage("ufo.png");
   particleimg = loadImage("particle.png");
+  bgimg = loadImage("bg.jpg");
+  font = createFont("Over There.ttf", 100);
   imageMode(CENTER);
   myShip = new Ship();
   myGameObjects = new ArrayList<GameObject>();
   myGameObjects.add(new Asteroid(width/2, height));
   myGameObjects.add(new Asteroid(width, height/2));
   myGameObjects.add(new Asteroid(0, 0));
-  myGameObjects.add(new Asteroid(width, height));
-  
+  myGameObjects.add(new Asteroid(width, height));  
 }
 
 void draw() {  
