@@ -22,6 +22,11 @@ void game() {
     myGameObjects.add(new Ufo());
     ufoTimer = 0;
   }
+  asteroidTimer++;
+  if (asteroidTimer >= 100) {
+    myGameObjects.add(new Asteroid(width + 50, random(0, height)));
+    asteroidTimer = 0;
+  }
   fill(255);
   textSize(20);
   text("POINTS> " + points, 50, 80);

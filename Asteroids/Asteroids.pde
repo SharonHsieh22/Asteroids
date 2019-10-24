@@ -15,6 +15,7 @@ final int game = 1;
 final int gameover = 2;
 int points;
 int ufoTimer;
+int asteroidTimer;
 
 void setup() {
   size(800, 600);

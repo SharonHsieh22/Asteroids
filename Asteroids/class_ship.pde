@@ -4,8 +4,9 @@ class Ship extends GameObject {
   PVector direction;
   int shotTimer;
   int threshold;
-  int timer;
   int livesThreshold;
+  float timer;
+  float alpha;
 
   //2. Constructors
   Ship() {
@@ -13,12 +14,13 @@ class Ship extends GameObject {
     lives = 3;
     shotTimer = 0;
     threshold = 10;
-    timer = 0;
+    timer = 180;
     livesThreshold = 50;
     size = 150;
     location = new PVector(width/2, height/2);
     velocity = new PVector(0, 0); 
     direction = new PVector(0, -.1);
+    alpha = 0;
   }
 
   //3. Behavior functions
@@ -42,18 +44,29 @@ class Ship extends GameObject {
       shotTimer = 0;
     }
 
+    timer++;
+    noFill();
+    stroke(255, alpha);
+    strokeWeight(10);
+    arc(location.x, location.y + 10, 150, 150, PI/2+PI, PI/2+PI+map(timer, 0, 180, 0, TWO_PI), OPEN);
+    if(timer > 0 && timer < 20) {
+      alpha = 255;
+    }
+    if(timer > 20 && timer < 180) {
+      alpha = alpha - 1.5;
+    }
+    
     for (int i = 0; i < myGameObjects.size(); i++) {
       GameObject myObj = myGameObjects.get(i);
       if (myObj instanceof Asteroid) {
         if (dist(myObj.location.x, myObj.location.y, location.x, location.y) < size/4 + myObj.size/2) {
-          if (timer <= 0) {
-            //lives--;
-            timer = 70;
+          if (timer >= 180) {
+            lives--;
+            timer = 0;
           }
-          timer--;
-          println(lives);
         }
       }
-    }
+    }    
+    println(timer);
   }
 }

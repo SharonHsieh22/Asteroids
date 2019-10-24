@@ -1,13 +1,15 @@
 class Ufo extends GameObject {
   int timer;
   int threshold;
+  int shotTimer;
+  
   Ufo() { 
     location = new PVector(width + 50, random(0, height));
     velocity = new PVector(random(-1, 1), random(-5, 5));
     lives = 1;
     size = 80;
-    timer = 0;
-    threshold = 100;
+    shotTimer = 0;
+    threshold = 30;
   }
 
   void show() {
@@ -16,8 +18,12 @@ class Ufo extends GameObject {
 
   void act() {
     super.act();
+    shotTimer++;
+    if (shotTimer >= threshold) {
+      myGameObjects.add(new uBullet(location.x, location.y)); 
+      shotTimer = 0;
+    }
     
-    //myGameObjects.add(new uBullet());
 
     for (int i = 0; i < myGameObjects.size(); i++) {
       GameObject myObj = myGameObjects.get(i);

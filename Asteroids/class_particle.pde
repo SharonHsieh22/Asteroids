@@ -8,20 +8,23 @@ class Particle extends GameObject {
     location = new PVector(_x, _y);
     velocity = new PVector(random(-5, 5), random(-8, 3));
     //velocity.setMag(6);
-    timer = 80;
+    timer = 70;
     size = 2;
     lives = 1;
   }
 
   void show() {    
     noStroke();
-    fill(255);
+    fill(#00E3FF, timer*4);
     ellipse(location.x, location.y, size, size);
   }
   
   void act() {
    super.act(); 
-     
+   timer--;
+    if(timer == 0) {
+     lives = 0; 
+    }  
 
   }
   
