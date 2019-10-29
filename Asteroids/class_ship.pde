@@ -30,7 +30,7 @@ class Ship extends GameObject {
     rotate(direction.heading());
     image(shipimg, 0, 0, size, size);
     popMatrix();
-  }
+   }
 
   void act() {
     shotTimer++;
@@ -53,13 +53,13 @@ class Ship extends GameObject {
       alpha = 255;
     }
     if(timer > 20 && timer < 180) {
-      alpha = alpha - 1.5;
+      alpha = alpha - 1.55;
     }
     
     for (int i = 0; i < myGameObjects.size(); i++) {
       GameObject myObj = myGameObjects.get(i);
-      if (myObj instanceof Asteroid) {
-        if (dist(myObj.location.x, myObj.location.y, location.x, location.y) < size/4 + myObj.size/2) {
+      if (myObj instanceof Asteroid || myObj instanceof uBullet) {
+        if (dist(myObj.location.x, myObj.location.y, location.x, location.y) < size/3 + myObj.size/2) {
           if (timer >= 180) {
             lives--;
             timer = 0;

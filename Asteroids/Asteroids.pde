@@ -4,18 +4,20 @@ PImage asteroidimg;
 PImage ufoimg;
 PImage particleimg;
 PImage bgimg;
+PImage goimg;
 PFont font;
 
 Ship myShip;
 Ufo myUfo;
 ArrayList<GameObject> myGameObjects;
-int mode;
+int mode = 0;
 final int intro = 0;
 final int game = 1;
 final int gameover = 2;
-int points;
-int ufoTimer;
-int asteroidTimer;
+int points = 0;
+int highscore = 0;
+int ufoTimer = 0;
+int asteroidTimer = 0;
 
 void setup() {
   size(800, 600);
@@ -24,6 +26,7 @@ void setup() {
   ufoimg = loadImage("ufo.png");
   particleimg = loadImage("particle.png");
   bgimg = loadImage("bg.jpg");
+  goimg = loadImage("gameoverbg.jpg");
   font = createFont("Over There.ttf", 100);
   imageMode(CENTER);
   myShip = new Ship();
@@ -69,6 +72,7 @@ void mouseReleased() {
    
   } else if (mode == gameover) {
     mode = intro;
+    setup();
   } else {
     println("error" + mode);
   }

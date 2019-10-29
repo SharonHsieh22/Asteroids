@@ -4,8 +4,8 @@ class Ufo extends GameObject {
   int shotTimer;
   
   Ufo() { 
-    location = new PVector(width + 50, random(0, height));
-    velocity = new PVector(random(-1, 1), random(-5, 5));
+    location = new PVector(width + 40, random(0, height));
+    velocity = new PVector(3, 0);
     lives = 1;
     size = 80;
     shotTimer = 0;

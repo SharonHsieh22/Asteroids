@@ -1,5 +1,6 @@
 void game() {
   background(0);
+  textFont(font);
   int i = 0;
   while (i < myGameObjects.size()) {
     GameObject myObj = myGameObjects.get(i);
@@ -31,4 +32,5 @@ void game() {
   textSize(20);
   text("POINTS> " + points, 50, 80);
   text("LIVES> " + myShip.lives, width - 200, 80);
+  if(points > highscore) highscore = points;
 }
