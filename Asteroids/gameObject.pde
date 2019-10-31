@@ -3,6 +3,7 @@ abstract class GameObject {
   PVector velocity;
   int lives;
   int size;
+  int timer;
 
 
   GameObject() {

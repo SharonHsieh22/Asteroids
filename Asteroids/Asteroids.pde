@@ -2,6 +2,7 @@ boolean upkey, downkey, leftkey, rightkey, spacekey;
 PImage shipimg;
 PImage asteroidimg;
 PImage ufoimg;
+PImage grenadeimg;
 PImage particleimg;
 PImage bgimg;
 PImage goimg;
@@ -14,10 +15,12 @@ int mode = 0;
 final int intro = 0;
 final int game = 1;
 final int gameover = 2;
+final int win = 3;
 int points = 0;
 int highscore = 0;
 int ufoTimer = 0;
 int asteroidTimer = 0;
+int grenadeTimer = 0;
 
 void setup() {
   size(800, 600);
@@ -25,6 +28,7 @@ void setup() {
   asteroidimg = loadImage("asteroid.png");
   ufoimg = loadImage("ufo.png");
   particleimg = loadImage("particle.png");
+  grenadeimg = loadImage("grenade.png");
   bgimg = loadImage("bg.jpg");
   goimg = loadImage("gameoverbg.jpg");
   font = createFont("Over There.ttf", 100);
@@ -35,6 +39,10 @@ void setup() {
   myGameObjects.add(new Asteroid(width, height/2));
   myGameObjects.add(new Asteroid(0, 0));
   myGameObjects.add(new Asteroid(width, height));  
+  points = 0;
+  highscore = 0;
+  ufoTimer = 0;
+  asteroidTimer = 0;
 }
 
 void draw() {  
@@ -44,33 +52,42 @@ void draw() {
     game();
   } else if (mode == gameover) {
     gameover();
+  } else if (mode == win) {
+    win();
   } else {
     println("error" + mode);
   }
 }
 
 void keyPressed() {
-  if (keyCode == UP) upkey = true;
-  if (keyCode == DOWN) downkey = true;
-  if (keyCode == RIGHT) rightkey = true;
-  if (keyCode == LEFT) leftkey = true;
+  if (keyCode == UP || key == 'w') upkey = true;
+  if (keyCode == DOWN || key == 's') downkey = true;
+  if (keyCode == RIGHT || key == 'd') rightkey = true;
+  if (keyCode == LEFT || key == 'a') leftkey = true;
   if (key == ' ') spacekey = true;
 }
 
 void keyReleased() {
-  if (keyCode == UP) upkey = false;
-  if (keyCode == DOWN) downkey = false;
-  if (keyCode == RIGHT) rightkey = false;
-  if (keyCode == LEFT) leftkey = false;
+  if (keyCode == UP || key == 'w') upkey = false;
+  if (keyCode == DOWN || key == 's') downkey = false;
+  if (keyCode == RIGHT || key == 'd') rightkey = false;
+  if (keyCode == LEFT || key == 'a') leftkey = false;
   if (key == ' ') spacekey = false;
+}
+
+void mousePressed() {
+  if(mode == game) {
+    myGameObjects.add(new Grenade());  
+  }
 }
 
 void mouseReleased() {
   if (mode == intro) {
     mode = game;
-  } else if (mode == game) {
-   
   } else if (mode == gameover) {
+    mode = intro;
+    setup();
+  } else if (mode == win) {
     mode = intro;
     setup();
   } else {
