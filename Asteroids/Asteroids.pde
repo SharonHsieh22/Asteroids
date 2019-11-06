@@ -1,3 +1,19 @@
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
+Minim minim;
+AudioPlayer fire;
+AudioPlayer ufo;
+AudioPlayer boom;
+
+//playsong.pause();
+//playsong.rewind();
+//oversong.play();
+
 boolean upkey, downkey, leftkey, rightkey, spacekey;
 PImage shipimg;
 PImage asteroidimg;
@@ -43,6 +59,8 @@ void setup() {
   highscore = 0;
   ufoTimer = 0;
   asteroidTimer = 0;
+  minim = new Minim(this);
+  fire = minim.loadFile("fire.wav");
 }
 
 void draw() {  

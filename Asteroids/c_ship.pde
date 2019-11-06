@@ -53,7 +53,7 @@ class Ship extends GameObject {
       alpha = 255;
     }
     if (timer > 20 && timer < 180) {
-      alpha = alpha - 1.6;
+      alpha = alpha - 1.55;
     }
 
     for (int i = 0; i < myGameObjects.size(); i++) {
