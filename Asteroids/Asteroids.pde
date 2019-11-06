@@ -61,6 +61,7 @@ void setup() {
   asteroidTimer = 0;
   minim = new Minim(this);
   fire = minim.loadFile("fire.wav");
+  boom = minim.loadFile("bangMedium.wav");
 }
 
 void draw() {  

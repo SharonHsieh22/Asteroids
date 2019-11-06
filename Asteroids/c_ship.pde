@@ -41,6 +41,8 @@ class Ship extends GameObject {
     if (rightkey) direction.rotate(PI/36);
     if (spacekey && shotTimer >= threshold) {
       myGameObjects.add(new Bullet());  
+      fire.play();
+      fire.rewind();
       shotTimer = 0;
     }
 

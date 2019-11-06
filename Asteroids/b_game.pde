@@ -12,6 +12,7 @@ void game() {
       i++;
     }
   }
+  
   if (myShip.lives > 0) {
     myShip.show();
     myShip.act();
@@ -22,16 +23,19 @@ void game() {
   } else {
     mode = gameover;
   }
+  
   ufoTimer++;
   if (ufoTimer >= 300) {
     myGameObjects.add(new Ufo());
     ufoTimer = 0;
   }
+  
   asteroidTimer++;
   if (asteroidTimer >= 150) {
     myGameObjects.add(new Asteroid(width + 50, random(0, height)));
     asteroidTimer = 0;
   }
+  
   grenadeTimer++;
   if (grenadeTimer >= 400) {
     myGameObjects.add(new Grenade());

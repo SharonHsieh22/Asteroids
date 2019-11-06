@@ -29,8 +29,10 @@ class Asteroid extends GameObject {
         if (dist(myObj.location.x, myObj.location.y, location.x, location.y) < size/2 + myObj.size/2) {
           myObj.lives = 0;
           lives = 0;
-          for (int j = 0; j < 100; ) {
+          for (int j = 0; j <= 100; ) {
             myGameObjects.add(new Particle(location.x, location.y));
+            boom.play();
+            boom.rewind();
             j++;
           }
           if (size > 50) {
@@ -40,7 +42,7 @@ class Asteroid extends GameObject {
           } else if (size > 12) {
             points = points + 1000;
           } 
-          if (size > 25) {
+          if (size > 26) {
             myGameObjects.add(new Asteroid(location.x, location.y, size/2));
             myGameObjects.add(new Asteroid(location.x, location.y, size/2));
           }

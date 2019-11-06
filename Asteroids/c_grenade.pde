@@ -31,6 +31,8 @@ class Grenade extends GameObject {
           lives = 0;
           for (int j = 0; j < 100; ) {
             myGameObjects.add(new Explosion(location.x, location.y));
+            boom.play();
+            boom.rewind();
             j++;
           }
         }
